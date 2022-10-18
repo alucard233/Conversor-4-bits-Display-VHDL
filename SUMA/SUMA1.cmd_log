@@ -1,0 +1,12 @@
+xst -intstyle ise -ifn "E:/SUMA/SUMA/SUMA1.xst" -ofn "E:/SUMA/SUMA/SUMA1.syr" 
+xst -intstyle ise -ifn "E:/SUMA/SUMA/SUMA1.xst" -ofn "E:/SUMA/SUMA/SUMA1.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s200-ft256-4 SUMA1.ngc SUMA1.ngd  
+map -intstyle ise -p xc3s200-ft256-4 -cm area -ir off -pr off -c 100 -o SUMA1_map.ncd SUMA1.ngd SUMA1.pcf 
+par -w -intstyle ise -ol high -t 1 SUMA1_map.ncd SUMA1.ncd SUMA1.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml SUMA1.twx SUMA1.ncd -o SUMA1.twr SUMA1.pcf 
+bitgen -intstyle ise -f SUMA1.ut SUMA1.ncd 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc SUMA1.ucf -p xc3s200-ft256-4 SUMA1.ngc SUMA1.ngd  
+map -intstyle ise -p xc3s200-ft256-4 -cm area -ir off -pr off -c 100 -o SUMA1_map.ncd SUMA1.ngd SUMA1.pcf 
+par -w -intstyle ise -ol high -t 1 SUMA1_map.ncd SUMA1.ncd SUMA1.pcf 
+trce -intstyle ise -v 3 -s 4 -n 3 -fastpaths -xml SUMA1.twx SUMA1.ncd -o SUMA1.twr SUMA1.pcf -ucf SUMA1.ucf 
+bitgen -intstyle ise -f SUMA1.ut SUMA1.ncd 
